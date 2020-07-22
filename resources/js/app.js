@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('card-dashboard', require('./components/CardDashboard.vue').default);
+Vue.component('table-list', require('./components/TableList').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

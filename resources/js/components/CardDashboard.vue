@@ -4,7 +4,7 @@
         <div class="card-body">
             <h5 class="card-title">{{titulo}}</h5>
             <p class="card-text">{{descricao}}</p>
-            <a :href="cardRoute()" class="btn btn-primary">Listagem</a>
+            <a :href="cardRoute()" class="btn btn-primary">Acessar</a>
         </div>
     </div>
 </template>
