@@ -4,9 +4,12 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+                @if($resposta)
+                    {{ $resposta }}
+                @endif
                 <div class="card">
                     <div class="card-header">
-                        <card-header-action titulo="Estudantes" link="{{ route('student.create') }}">
+                        <card-header-action titulo="Estudantes" titulobotao="Novo Registro" link="{{ route('student.create') }}">
                         </card-header-action>
                     </div>
                     <div class="card-body">

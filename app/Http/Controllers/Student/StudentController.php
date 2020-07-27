@@ -3,10 +3,22 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StudentRequest;
+use App\Repositories\StudentRepository;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    /**
+     * @var StudentRepository
+     */
+    private $studentRepository;
+
+    public function __construct(StudentRepository $studentRepository)
+    {
+
+        $this->studentRepository = $studentRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -24,18 +36,21 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('student/record');
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param StudentRequest $studentRequest
+     * @return string|void
      */
-    public function store(Request $request)
+    public function store(StudentRequest $studentRequest)
     {
-        //
+        try {
+            $student =  $this->studentRepository->saveRecord($studentRequest);
+            return response()->json(['student' => $student]);
+        }catch (\Exception $e){
+            return response()->json(['message' => $e->getMessage()]);
+        }
     }
 
     /**

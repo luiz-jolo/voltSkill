@@ -1958,7 +1958,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CardHeaderAction",
-  props: ['titulo', 'link']
+  props: ['titulo', 'link', 'titulobotao']
 });
 
 /***/ }),
@@ -37668,7 +37668,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card", staticStyle: { width: "16rem" } }, [
+  return _c("div", { staticClass: "card", staticStyle: { width: "100%" } }, [
     _c("img", {
       staticClass: "card-img-top",
       attrs: { src: _vm.getCardImage(), alt: "" }
@@ -37722,7 +37722,7 @@ var render = function() {
             staticClass: "btn btn-outline-primary btn-sm",
             attrs: { href: _vm.link }
           },
-          [_vm._v("+ Novo Registro")]
+          [_vm._v(" " + _vm._s(_vm.titulobotao))]
         )
       ])
     ])
