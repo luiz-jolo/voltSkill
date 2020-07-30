@@ -1,12 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                @if($resposta)
-                    {{ $resposta }}
-                @endif
                 <div class="card">
                     <div class="card-header">
                         <card-header-action titulo="Estudantes" titulobotao="Novo Registro" link="{{ route('student.create') }}">

@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StudentRequest;
 use App\Repositories\StudentRepository;
+use App\StudentModel;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class StudentController extends Controller
 {
@@ -19,14 +21,18 @@ class StudentController extends Controller
 
         $this->studentRepository = $studentRepository;
     }
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        return view('student.index');
+        $students = json_encode(StudentModel::all());
+        $estudantes = StudentModel::all();
+        $teste = $estudantes->toJson();
+        dd($teste);
+        return view('student.index')
+            ->with('students', StudentModel::all());
     }
 
     /**
@@ -47,7 +53,8 @@ class StudentController extends Controller
     {
         try {
             $student =  $this->studentRepository->saveRecord($studentRequest);
-            return response()->json(['student' => $student]);
+            Alert::success('Sucesso', 'Estudante cadastrado com sucesso');
+            return redirect()->route('student.index');
         }catch (\Exception $e){
             return response()->json(['message' => $e->getMessage()]);
         }

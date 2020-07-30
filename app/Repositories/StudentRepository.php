@@ -33,23 +33,31 @@ class StudentRepository extends BaseRepository
           new StudentModel(),
           $studentRequest
         );
+//        $studentData = $studentRequest->all();
+
     }
 
     public function saveStudent(StudentModel $studentModel, StudentRequest $studentRequest)
     {
         $studentData = $studentRequest->all();
 
+//        $studentModel->create([
+//            'stud_name' => $studentData['name'],
+//            'stud_email' => $studentData['email'],
+//            'stud_registration' => rand(300,3000),
+//            'stud_document' => $studentData['cpf'],
+//            'stud_birth_date' => $studentData['data_nascimento']
+//        ]);
+
         $studentModel->stud_name = $studentData['name'];
         $studentModel->stud_email = $studentData['email'];
         $studentModel->stud_registration = rand(300,3000);
-        $studentModel->stud_numeric_document = $studentData['cpf'];
+        $studentModel->stud_document = $studentData['cpf'];
         $studentModel->stud_birth_date = $studentData['data_nascimento'];
 
-        if (!$this->save($studentModel)){
-            $resposta = 'erro';
-        }
-        $resposta = 'sucesso ao salvar dados';
-        return $resposta;
+        $studentModel->save();
+        return $studentModel;
+
     }
 
 }

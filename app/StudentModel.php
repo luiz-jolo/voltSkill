@@ -13,7 +13,7 @@ class StudentModel extends Model
     protected $fillable = [
         'stud_name',
         'stud_registration',
-        'stud_numeric_document',
+        'stud_document',
         'stud_birth_date',
         'stud_email',
         'created_at',
